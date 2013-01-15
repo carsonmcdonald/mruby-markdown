@@ -38,8 +38,6 @@
 static void
 mrb_sd_markdown_free(mrb_state *mrb, void *markdown)
 {
-  puts("Freeing markdown");
-
   if(markdown)
   {
     sd_markdown_free((struct sd_markdown *)markdown);
