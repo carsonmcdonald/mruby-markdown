@@ -5,6 +5,10 @@ Markdown for mruby using the [Sundown library](https://github.com/vmg/sundown).
 
 ## Installation
 
+In the mruby build_config.rb file add:
+
+conf.gem :git => 'git://github.com/carsonmcdonald/mruby-markdown.git', :branch => 'master', :options => '--recursive'
+
 In the mruby directory:
 
 ```bash
