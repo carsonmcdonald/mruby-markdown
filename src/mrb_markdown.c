@@ -122,3 +122,8 @@ mrb_mruby_markdown_gem_init(mrb_state* mrb)
   mrb_define_method(mrb, class_markdown, "initialize", mrb_markdown_init, ARGS_NONE());
   mrb_define_method(mrb, class_markdown, "render", mrb_c_render, ARGS_NONE());
 }
+
+void
+mrb_mruby_markdown_gem_final(mrb_state* mrb) 
+{ 
+}
