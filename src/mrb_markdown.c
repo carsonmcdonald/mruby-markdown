@@ -105,7 +105,7 @@ mrb_c_render(mrb_state *mrb, mrb_value self)
   }
 
   struct buf *ob = bufnew(64);
-  sd_markdown_render(ob, RSTRING_PTR(to_render), RSTRING_LEN(to_render), markdown);
+  sd_markdown_render(ob, (const uint8_t*) RSTRING_PTR(to_render), RSTRING_LEN(to_render), markdown);
 
   mrb_value rendered_output = mrb_str_new(mrb, (char*)ob->data, ob->size);
   bufrelease(ob);
