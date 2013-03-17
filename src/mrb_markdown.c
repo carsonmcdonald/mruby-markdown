@@ -90,8 +90,7 @@ mrb_c_render(mrb_state *mrb, mrb_value self)
 {
   mrb_value value_context = mrb_iv_get(mrb, self, mrb_intern(mrb, "markdown"));
 
-  struct sd_markdown* markdown = NULL;
-  Data_Get_Struct(mrb, value_context, &sd_markdown_type, markdown);
+  struct sd_markdown* markdown = mrb_get_datatype(mrb, value_context, &sd_markdown_type);
   if(!markdown) 
   {
     mrb_raise(mrb, E_ARGUMENT_ERROR, "Markdown instance variable not set.");
