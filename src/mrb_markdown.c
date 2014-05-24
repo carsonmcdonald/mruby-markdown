@@ -33,7 +33,7 @@
 #include "sundown/html/html.h"
 #include "sundown/src/buffer.h"
 
-#define HASH_TRUE(mrb, hash, value) (mrb_obj_equal(mrb, mrb_hash_get(mrb, hash, mrb_symbol_value(mrb_intern(mrb, value))), mrb_true_value()))
+#define HASH_TRUE(mrb, hash, value) (mrb_obj_equal(mrb, mrb_hash_get(mrb, hash, mrb_symbol_value(mrb_intern_lit(mrb, value))), mrb_true_value()))
 
 static void
 mrb_sd_markdown_free(mrb_state *mrb, void *markdown)
@@ -80,7 +80,7 @@ mrb_markdown_init(mrb_state *mrb, mrb_value self)
     mrb_raise(mrb, E_RUNTIME_ERROR, "Could not create markdown instance.");
   }
 
-  mrb_iv_set(mrb, self, mrb_intern(mrb, "markdown"), mrb_obj_value(Data_Wrap_Struct(mrb, mrb->object_class, &sd_markdown_type, (void*)markdown)));
+  mrb_iv_set(mrb, self, mrb_intern_lit(mrb, "markdown"), mrb_obj_value(Data_Wrap_Struct(mrb, mrb->object_class, &sd_markdown_type, (void*)markdown)));
 
   return self;
 }
@@ -88,7 +88,7 @@ mrb_markdown_init(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_c_render(mrb_state *mrb, mrb_value self)
 {
-  mrb_value value_context = mrb_iv_get(mrb, self, mrb_intern(mrb, "markdown"));
+  mrb_value value_context = mrb_iv_get(mrb, self, mrb_intern_lit(mrb, "markdown"));
 
   struct sd_markdown* markdown = mrb_get_datatype(mrb, value_context, &sd_markdown_type);
   if(!markdown) 
