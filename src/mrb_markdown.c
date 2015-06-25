@@ -118,8 +118,8 @@ mrb_mruby_markdown_gem_init(mrb_state* mrb)
   struct RClass *module_markdown = mrb_define_module(mrb, "Markdown");
   struct RClass *class_markdown = mrb_define_class_under(mrb, module_markdown, "Markdown", mrb->object_class);
 
-  mrb_define_method(mrb, class_markdown, "initialize", mrb_markdown_init, ARGS_NONE());
-  mrb_define_method(mrb, class_markdown, "render", mrb_c_render, ARGS_NONE());
+  mrb_define_method(mrb, class_markdown, "initialize", mrb_markdown_init, MRB_ARGS_NONE());
+  mrb_define_method(mrb, class_markdown, "render", mrb_c_render, MRB_ARGS_NONE());
 }
 
 void
